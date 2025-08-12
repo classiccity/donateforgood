@@ -52,6 +52,13 @@ header.site-header {
 			}
 		}
 		
+		.header-phone {
+			font-size: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
+			a {
+				color: $white;
+			}
+		}
+		
 		.menu-toggle-wrap {
 		    width: auto;
 		    flex: 0 0 auto;

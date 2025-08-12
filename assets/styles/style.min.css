@@ -7312,6 +7312,12 @@ header.site-header #top-bar-menu #main-nav > li:not(:last-child):after {
 header.site-header #top-bar-menu #main-nav > li > a {
   color: #fff;
 }
+header.site-header #top-bar-menu .header-phone {
+  font-size: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
+}
+header.site-header #top-bar-menu .header-phone a {
+  color: #fff;
+}
 header.site-header #top-bar-menu .menu-toggle-wrap {
   width: auto;
   -webkit-box-flex: 0;
@@ -7388,8 +7394,13 @@ footer#colophon h3 {
   margin-bottom: 0.3em;
 }
 @media print, screen and (max-width: 56.24875em) {
-  footer#colophon .left .bottom {
+  footer#colophon .right .bottom {
     padding-bottom: 4.1rem;
+  }
+}
+@media print, screen and (min-width: 56.25em) {
+  footer#colophon .right {
+    text-align: right;
   }
 }
 @media print, screen and (max-width: 56.24875em) {
@@ -7398,7 +7409,7 @@ footer#colophon h3 {
   }
 }
 footer#colophon ul#footer-links li a {
-  font-size: clamp(1.05rem, 0.864rem + 0.796vw, 1.5rem);
+  font-size: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
 }
 footer#colophon ul#footer-links li:not(:last-child) {
   margin-bottom: clamp(0.831rem, 0.684rem + 0.63vw, 1.188rem);
@@ -7407,17 +7418,12 @@ footer#colophon .logo-wrap {
   max-width: 200px;
   margin: 0 auto clamp(1.4rem, 1.151rem + 1.061vw, 2rem);
 }
-footer#colophon .right {
-  line-height: 1;
-  font-size: clamp(1.05rem, 0.864rem + 0.796vw, 1.5rem);
+footer#colophon .left {
+  line-height: 1.5;
+  font-size: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
 }
-footer#colophon .right > div:not(:last-child) {
-  margin-bottom: clamp(0.831rem, 0.684rem + 0.63vw, 1.188rem);
-}
-@media print, screen and (min-width: 56.25em) {
-  footer#colophon .right {
-    text-align: right;
-  }
+footer#colophon .left > div:not(:last-child) {
+  margin-bottom: clamp(0.35rem, 0.288rem + 0.265vw, 0.5rem);
 }
 footer#colophon .subfooter {
   padding-top: clamp(1.663rem, 1.367rem + 1.26vw, 2.375rem);
@@ -7426,6 +7432,7 @@ footer#colophon .subfooter {
 .page-template-page-home .home-hero {
   padding-top: 9.8125rem;
   padding-bottom: 15px;
+  background-size: cover;
 }
 .page-template-page-home .home-hero .img-wrap {
   max-width: 1033px;

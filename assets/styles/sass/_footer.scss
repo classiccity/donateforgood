@@ -12,11 +12,14 @@ footer#colophon {
 		margin-bottom: .3em;
 	}
 	
-	.left {
+	.right {
 		.bottom {
 			@include breakpoint(medium down) {
 				padding-bottom: 4.1rem;
 			}
+		}
+		@include breakpoint(tablet) {
+			text-align: right;
 		}
 	}
 		
@@ -26,7 +29,7 @@ footer#colophon {
 		}
 		li {
 			a {
-				font-size: clamp(1.05rem, 0.864rem + 0.796vw, 1.5rem);
+				font-size: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
 			}
 			&:not(:last-child) {
 				margin-bottom: clamp(0.831rem, 0.684rem + 0.63vw, 1.188rem);
@@ -39,14 +42,11 @@ footer#colophon {
 		margin: 0 auto clamp(1.4rem, 1.151rem + 1.061vw, 2rem);
 	}
 	
-	.right {
-		line-height: 1;
-		font-size: clamp(1.05rem, 0.864rem + 0.796vw, 1.5rem);
+	.left {
+		line-height: 1.5;
+		font-size: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
 		> div:not(:last-child) {
-			margin-bottom: clamp(0.831rem, 0.684rem + 0.63vw, 1.188rem);
-		}
-		@include breakpoint(tablet) {
-			text-align: right;
+			margin-bottom: clamp(0.35rem, 0.288rem + 0.265vw, 0.5rem);
 		}
 	}
 	

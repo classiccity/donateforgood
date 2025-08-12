@@ -5,6 +5,9 @@
  * For more info: https://jointswp.com/docs/off-canvas-menu/
  */
 $logo = get_field('header_logo', 'option');
+$header_phone_label = get_field('header_phone_label', 'option') ?? null;
+$header_displayed_header_phone_number = get_field('header_displayed_header_phone_number', 'option') ?? null;
+$header_phone_number = get_field('header_phone_number', 'option') ?? null;
 ?>
 
 <div class="top-bar-wrap grid-container fluid">
@@ -43,8 +46,18 @@ $logo = get_field('header_logo', 'option');
 				</div>
 			</div>
 		</div>
-		<div class="menu-toggle-wrap top-bar-right float-right hide-for-medium">
-			<ul class="menu">
+		<div class="menu-toggle-wrap top-bar-right float-right">
+			<?php if( $header_phone_label || $header_phone_number || $header_displayed_header_phone_number ):?>
+				<div class="header-phone uppercase color-white">
+					<?php if( $header_phone_label && $header_displayed_header_phone_number ):?>
+						<b><?=wp_kses_post($header_phone_label);?></b>
+					<?php endif;?>
+					<?php if( $header_phone_number ):?>
+						<a href="tel:<?=esc_attr($header_phone_number);?>"><?=esc_attr($header_displayed_header_phone_number);?></a>
+					<?php endif;?>
+				</div>
+			<?php endif;?>
+			<ul class="menu hide-for-medium">
 				<!-- <li><button class="menu-icon" type="button" data-toggle="off-canvas"></button></li> -->
 				<li><a id="menu-toggle" data-toggle="off-canvas"><span></span><span></span><span></span></a></li>
 			</ul>
