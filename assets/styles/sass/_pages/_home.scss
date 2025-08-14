@@ -83,7 +83,10 @@
 		padding-top: clamp(1.125rem, 0.918rem + 0.884vw, 1.625rem);
 		padding-bottom: clamp(1.125rem, 0.918rem + 0.884vw, 1.625rem);
 		.auto {
-			padding: 2rem;
+			padding: 2rem 0;
+			@include breakpoint(tablet) {
+				padding: 2rem;
+			}
 		}
 		.swiper-btn {
 			position: static;
@@ -92,6 +95,20 @@
 			margin: 0;
 			&:after {
 				display: none;
+			}
+		}
+		.swiper-pagination {
+			margin-top: 3rem;
+			position: static;
+			.swiper-pagination-bullet {
+				opacity: 1;
+				width: 18px;
+				height: 18px;
+				border: 2px solid $white;
+				background-color: $white;
+				&-active {
+					background-color: transparent;	
+				}
 			}
 		}
 		.quote-wrap {

@@ -164,11 +164,13 @@ $testimonials = $fields['testimonials'] ?? null;
 							<section id="<?=sanitize_title($testimonials_section_id);?>" class="testimonials bg-teal color-white">
 								<div class="grid-container">
 									<div class="grid-x align-center align-middle">
-										<div class="cell shrink">
-											<div class="swiper-btn swiper-button-prev">
-												<svg xmlns="http://www.w3.org/2000/svg" width="33" height="78"><path fill-rule="evenodd" fill="#FFF" d="M0 38.1 33 0v78L0 38.1Z"/></svg>
+										<?php if( count($testimonials) > 1 ):?>
+											<div class="cell shrink show-for-medium">
+												<div class="swiper-btn swiper-button-prev">
+													<svg xmlns="http://www.w3.org/2000/svg" width="33" height="78"><path fill-rule="evenodd" fill="#FFF" d="M0 38.1 33 0v78L0 38.1Z"/></svg>
+												</div>
 											</div>
-										</div>
+										<?php endif;?>
 										<div class="cell auto">
 											<div class="testimonials-slider overflow-hidden">
 												<div class="swiper-wrapper align-middle">
@@ -190,13 +192,18 @@ $testimonials = $fields['testimonials'] ?? null;
 														</div>
 													<?php endforeach;?>
 												</div>
+												<?php if( count($testimonials) > 1 ):?>
+													<div class="swiper-pagination hide-for-medium"></div>
+												<?php endif;?>
 											</div>
 										</div>
-										<div class="cell shrink">
-											<div class="swiper-btn swiper-button-next">
-												<svg xmlns="http://www.w3.org/2000/svg" width="33" height="78"><path fill-rule="evenodd" fill="#FFF" d="M33 38.1 0 78V0l33 38.1Z"/></svg>
+										<?php if( count($testimonials) > 1 ):?>
+											<div class="cell shrink show-for-medium">
+												<div class="swiper-btn swiper-button-next">
+													<svg xmlns="http://www.w3.org/2000/svg" width="33" height="78"><path fill-rule="evenodd" fill="#FFF" d="M33 38.1 0 78V0l33 38.1Z"/></svg>
+												</div>
 											</div>
-										</div>
+										<?php endif;?>
 									</div>
 								</div>
 							</section>

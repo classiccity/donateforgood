@@ -32,7 +32,7 @@
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.tabs.js
 
 // Accordian
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.accordion.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.accordion.js
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.accordionMenu.js
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.responsiveAccordionTabs.js
 
@@ -154,12 +154,22 @@
         
         const prevNav = slider.parentElement.parentElement.querySelector('.swiper-button-prev');
         const nextNav = slider.parentElement.parentElement.querySelector('.swiper-button-next');
+        
+        const pagination = slider.parentElement.parentElement.querySelector('.swiper-pagination'); 
 
         const swiper = new Swiper(slider, {
             loop: true,
-            navigation: {
-                nextEl: nextNav,
-                prevEl: prevNav,
+            pagination: {
+                el: pagination,
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    navigation: {
+                        nextEl: nextNav,
+                        prevEl: prevNav,
+                    },
+                },
             },
         });
         
