@@ -241,7 +241,7 @@
         },
         {
             "key": "field_689a5edc48986",
-            "label": "FAQ",
+            "label": "How It Works",
             "name": "",
             "aria-label": "",
             "type": "accordion",
@@ -260,7 +260,7 @@
         {
             "key": "field_689a5f6655152",
             "label": "Section ID",
-            "name": "faq_section_id",
+            "name": "how_section_id",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -281,7 +281,7 @@
         {
             "key": "field_689a5ef048987",
             "label": "Title",
-            "name": "faq_title",
+            "name": "how_title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -302,7 +302,7 @@
         {
             "key": "field_689a5efa48988",
             "label": "Columns",
-            "name": "faq_columns",
+            "name": "how_columns",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -634,5 +634,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1754954381
+    "modified": 1755263635
 }

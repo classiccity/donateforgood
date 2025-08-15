@@ -25,9 +25,9 @@ $about_large_copy = $fields['about_large_copy'] ?? null;
 $about_medium_copy = $fields['about_medium_copy'] ?? null;
 
 // how it works
-$faq_section_id = $fields['faq_section_id'] ?? null;
-$faq_title = $fields['faq_title'] ?? null;
-$faq_columns = $fields['faq_columns'] ?? null;
+$how_section_id = $fields['how_section_id'] ?? null;
+$how_title = $fields['how_title'] ?? null;
+$how_columns = $fields['how_columns'] ?? null;
 
 // partners
 $partners_section_id = $fields['partners_section_id'] ?? null;
@@ -93,20 +93,20 @@ $testimonials = $fields['testimonials'] ?? null;
 							</section>
 						<?php endif;?>
 						
-						<?php if( $faq_title || $faq_columns ):?>
-							<section id="<?=sanitize_title($faq_section_id);?>" class="faq bg-navy color-white text-center" data-equalizer data-equalize-on="medium">
+						<?php if( $how_title || $how_columns ):?>
+							<section id="<?=sanitize_title($how_section_id);?>" class="faq bg-navy color-white text-center" data-equalizer data-equalize-on="medium">
 								<div class="grid-container">
-									<?php if( $faq_title ):?>
+									<?php if( $how_title ):?>
 										<h2>
-											<?=wp_kses_post($faq_title);?>
+											<?=wp_kses_post($how_title);?>
 										</h2>
 									<?php endif;?>
-									<?php if( $faq_columns ):?>
+									<?php if( $how_columns ):?>
 										<div class="grid-x grid-padding-x align-center small-up-1 medium-up-2 tablet-up-4">
-											<?php foreach($faq_columns as $faq_column):
-												$icon = $faq_column['icon'] ?? null;
-												$title = $faq_column['title'] ?? null;
-												$text = $faq_column['text'] ?? null;
+											<?php foreach($how_columns as $how_column):
+												$icon = $how_column['icon'] ?? null;
+												$title = $how_column['title'] ?? null;
+												$text = $how_column['text'] ?? null;
 											?>
 												<div class="cell">
 													<?php if($icon):?>
