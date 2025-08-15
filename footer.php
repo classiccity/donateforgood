@@ -23,7 +23,7 @@ $footer_copyright_text = get_field('footer_copyright_text', 'option') ?? null;
 				<footer id="colophon" class="site-footer bg-black color-white">
 					<div class="site-info">
 						<div class="grid-container">
-							<div class="grid-x grid-padding-x align-middle">
+							<div class="inner grid-x grid-padding-x">
 								
 								<?php if( $footer_contact_title || $footer_phone_number || $footer_address || $footer_email_address || $footer_email_address ):?>
 									<div id="<?=esc_attr($footer_contact_id);?>" class="left cell small-12 medium-6 tablet-4 show-for-tablet">

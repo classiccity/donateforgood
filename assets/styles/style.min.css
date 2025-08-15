@@ -4223,7 +4223,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 
 .accordion {
   margin-left: 0;
-  background: #03274b;
+  background: transparent;
   list-style-type: none;
 }
 .accordion[disabled] .accordion-title {
@@ -4240,7 +4240,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 .accordion-title {
   position: relative;
   display: block;
-  padding: 1.25rem 1rem;
+  padding: 0.9065em 1.3em;
   border: 0px solid #e6e6e6;
   border-bottom: 0;
   font-size: 0.75rem;
@@ -6783,6 +6783,59 @@ svg {
   height: auto;
 }
 
+.page-banner {
+  padding-top: clamp(2.275rem, 1.871rem + 1.724vw, 3.25rem);
+  padding-bottom: clamp(2.844rem, 2.339rem + 2.155vw, 4.063rem);
+}
+
+.accordion .accordion-item {
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
+}
+.accordion .accordion-item.is-active a.accordion-title:before {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+.accordion a.accordion-title {
+  padding: clamp(1.269rem, 1.043rem + 0.961vw, 1.813rem) clamp(1.837rem, 1.511rem + 1.392vw, 2.625rem);
+}
+.accordion a.accordion-title:hover, .accordion a.accordion-title:focus {
+  color: #fff;
+}
+.accordion a.accordion-title:before {
+  content: "";
+  top: clamp(1.041rem, 0.824rem + 0.923vw, 1.563rem);
+  right: clamp(2.275rem, 1.871rem + 1.724vw, 3.25rem);
+  margin: 0;
+  font-size: 0;
+  width: 40px;
+  height: 40px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="29"><path fill-rule="evenodd" fill="%23FFF" d="m25 0 24.1 29H0L25 0Z"/></svg>');
+  background-size: 33.3px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+.accordion .accordion-content {
+  padding: clamp(1.269rem, 1.043rem + 0.961vw, 1.813rem) clamp(1.837rem, 1.511rem + 1.392vw, 2.625rem);
+}
+.accordion .accordion-content p,
+.accordion .accordion-content ul,
+.accordion .accordion-content ol {
+  font-size: clamp(1.063rem, 0.881rem + 0.773vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.333;
+}
+.accordion .accordion-content p:last-child,
+.accordion .accordion-content ul:last-child,
+.accordion .accordion-content ol:last-child {
+  margin-bottom: 0;
+}
+
 .has-bg {
   position: relative;
 }
@@ -7286,7 +7339,7 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 }
 
 .bg-orange {
-  background-color: #d64711;
+  background-color: #d74611;
 }
 
 .color-white {
@@ -7295,6 +7348,10 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 
 .color-light-gray {
   color: #e6e6e6;
+}
+
+.m-0 {
+  margin: 0;
 }
 
 h1,
@@ -7321,7 +7378,7 @@ h3,
 
 header.site-header {
   padding: 35px 0;
-  background-color: #4fb7a9;
+  background-color: #d74611;
 }
 @media print, screen and (max-width: 39.99875em) {
   header.site-header .top-bar .top-bar-left,
@@ -7450,8 +7507,16 @@ footer#colophon {
     text-align: center;
   }
 }
+@media print, screen and (min-width: 56.25em) {
+  footer#colophon .site-info .inner {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
 footer#colophon a {
   color: #fff;
+  white-space: nowrap;
 }
 footer#colophon h3 {
   margin-bottom: 0.3em;
@@ -7484,6 +7549,11 @@ footer#colophon .logo-wrap {
 footer#colophon .left {
   line-height: 1.5;
   font-size: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
+}
+@media print, screen and (max-width: 39.99875em) {
+  footer#colophon .left {
+    margin-bottom: 3.125rem;
+  }
 }
 footer#colophon .left > div:not(:last-child) {
   margin-bottom: clamp(0.35rem, 0.288rem + 0.265vw, 0.5rem);
@@ -7613,5 +7683,55 @@ footer#colophon .subfooter {
 }
 .page-template-page-home .testimonials .citation-wrap {
   font-size: clamp(1.225rem, 1.007rem + 0.928vw, 1.75rem);
+}
+
+.page-template-page-faq .accordion {
+  padding-bottom: clamp(2.712rem, 2.231rem + 2.055vw, 3.875rem);
+}
+.page-template-page-faq .contact-cta {
+  padding-top: clamp(1.75rem, 1.439rem + 1.326vw, 2.5rem);
+  padding-bottom: clamp(1.575rem, 1.295rem + 1.193vw, 2.25rem);
+}
+.page-template-page-faq .contact-cta a {
+  color: #fff;
+}
+.page-template-page-faq .contact-cta .large-text p,
+.page-template-page-faq .contact-cta .medium-text p {
+  font-weight: 600;
+}
+.page-template-page-faq .contact-cta .large-text p {
+  font-size: clamp(2.056rem, 1.691rem + 1.558vw, 2.938rem);
+}
+.page-template-page-faq .contact-cta .medium-text p {
+  font-size: clamp(1.365rem, 1.123rem + 1.034vw, 1.95rem);
+}
+.page-template-page-faq .contact-cta p {
+  margin: 0;
+}
+.page-template-page-faq .img-gallery {
+  padding-bottom: clamp(2.45rem, 2.015rem + 1.856vw, 3.5rem);
+}
+.page-template-page-faq .img-gallery .grid-x {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.page-template-page-faq .img-gallery .grid-x > .cell {
+  padding: 10px;
+}
+.page-template-page-faq .img-gallery .inner {
+  position: relative;
+  padding-top: 100%;
+  border: 1px solid #fff;
+}
+.page-template-page-faq .img-gallery .inner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 /*# sourceMappingURL=style.min.css.map */

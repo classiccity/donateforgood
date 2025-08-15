@@ -18,6 +18,61 @@ svg {
 	height: auto;
 }
 
+.page-banner {
+	padding-top: clamp(2.275rem, 1.871rem + 1.724vw, 3.25rem);
+	padding-bottom: clamp(2.844rem, 2.339rem + 2.155vw, 4.063rem);
+}
+
+.accordion {
+	.accordion-item {
+		border-radius: 20px;
+		overflow: hidden;
+		margin-bottom: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
+		&.is-active {
+			a.accordion-title {
+				&:before {
+					transform: rotateX(180deg);	
+				}
+			}
+		}
+	}
+	a.accordion-title {	
+		padding: clamp(1.269rem, 1.043rem + 0.961vw, 1.813rem) clamp(1.837rem, 1.511rem + 1.392vw, 2.625rem);
+		&:hover,
+		&:focus {
+			color: $white;
+		}
+		&:before {
+			content: '';
+			top: clamp(1.041rem, 0.824rem + 0.923vw, 1.563rem);
+			right: clamp(2.275rem, 1.871rem + 1.724vw, 3.25rem);
+			margin: 0;
+			font-size: 0;
+			width: 40px;
+			height: 40px;
+			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="29"><path fill-rule="evenodd" fill="%23FFF" d="m25 0 24.1 29H0L25 0Z"/></svg>');
+			background-size: 33.3px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			transition: .3s ease;
+			transform-origin: center;
+		}
+	}
+	.accordion-content {
+		padding: clamp(1.269rem, 1.043rem + 0.961vw, 1.813rem) clamp(1.837rem, 1.511rem + 1.392vw, 2.625rem);
+		p,
+		ul,
+		ol {
+			font-size: clamp(1.063rem, 0.881rem + 0.773vw, 1.5rem);
+			font-weight: 600;
+			line-height: 1.333;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
 .has-bg {
 	position: relative;
 	.bg {

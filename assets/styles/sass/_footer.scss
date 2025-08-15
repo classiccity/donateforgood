@@ -4,8 +4,16 @@ footer#colophon {
 	@include breakpoint(medium down) {
 		text-align: center;
 	}
+	
+	.site-info .inner {
+		@include breakpoint(tablet) {
+			align-items: center;
+		}
+	}
+	
 	a {
 		color: $white;
+		white-space: nowrap;
 	}
 	
 	h3 {
@@ -43,6 +51,9 @@ footer#colophon {
 	}
 	
 	.left {
+		@include breakpoint(small down) {
+			margin-bottom: rem-calc(50);
+		}
 		line-height: 1.5;
 		font-size: clamp(0.875rem, 0.72rem + 0.663vw, 1.25rem);
 		> div:not(:last-child) {
