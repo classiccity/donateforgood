@@ -87,7 +87,7 @@ function vehdb_decode_proxy( WP_REST_Request $req ) {
   }
 
   // Keep the API key server-side
-  $apiKey = '0ffc000a641611f083c40242ac120002';
+  $apiKey = get_field('api_key', 'option') ?? '';
 
   $url = sprintf(
     'https://api.vehicledatabases.com/license-decode/%s/%s',
