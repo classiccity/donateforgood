@@ -214,20 +214,106 @@
         });
         
     }
-            
+    
+    // Add inside your IIFE with other custom functions
+_app.autofill_donate_from_plate = function() {
+    console.log("[autofill] init");
+
+    // normalize trailing slash
+    var path = window.location.pathname.replace(/\/+$/, '');
+    console.log("[autofill] pathname:", path);
+
+    if (!/\/donate$/.test(path)) {
+        console.log("[autofill] not a donate page, exiting");
+        return;
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var plate  = (params.get('plate') || '').trim();
+    var state  = (params.get('state') || '').trim();
+    console.log("[autofill] query params:", { plate, state });
+
+    if (!plate || !state) {
+        console.log("[autofill] missing plate or state, exiting");
+        return;
+    }
+
+    // Optional: normalize state to uppercase
+    state = state.toUpperCase();
+    console.log("[autofill] normalized state:", state);
+
+    // DOM refs
+    var $vin   = $('.donate-form-vin input');
+    var $year  = $('.donate-form-year input');
+    var $make  = $('.donate-form-make input');
+    var $model = $('.donate-form-model input');
+    console.log("[autofill] field elements found:", {
+        vin: $vin.length,
+        year: $year.length,
+        make: $make.length,
+        model: $model.length
+    });
+
+    var disable = function(on){
+        console.log("[autofill] disable fields:", on);
+        [$vin, $year, $make, $model].forEach(function($el){
+            $el.prop('disabled', !!on);
+        });
+    };
+
+    var fill = function(data){
+        console.log("[autofill] fill called with:", data);
+        if (!data) return;
+        if (data.vin   != null) { $vin.val(data.vin).trigger('change'); console.log("[autofill] filled vin:", data.vin); }
+        if (data.year  != null) { $year.val(data.year).trigger('change'); console.log("[autofill] filled year:", data.year); }
+        if (data.make  != null) { $make.val(data.make).trigger('change'); console.log("[autofill] filled make:", data.make); }
+        if (data.model != null) { $model.val(data.model).trigger('change'); console.log("[autofill] filled model:", data.model); }
+    };
+
+    disable(true);
+
+    console.log("[autofill] sending AJAX request", { plate, state });
+    $.ajax({
+        url: '/wp-json/vehdb/v1/license-decode',
+        method: 'GET',
+        dataType: 'json',
+        data: { plate: plate, state: state },
+        timeout: 10000
+    })
+    .done(function(res){
+        console.log("[autofill] ajax success:", res);
+        if (res && !res.error) {
+            fill(res);
+        } else {
+            console.warn("[autofill] ajax returned error or empty:", res);
+        }
+    })
+    .fail(function(xhr, status, err){
+        console.error("[autofill] ajax failed:", status, err, xhr);
+    })
+    .always(function(){
+        console.log("[autofill] ajax complete, re-enabling fields");
+        disable(false);
+    });
+};
+
+
+    // then register it in your init:
     _app.init = function() {
-        
-        // Standard Functions
+        // Standard
         _app.foundation_init();
         _app.emptyParentLinks();
         _app.fixed_nav_hack();
         _app.display_on_load();
         _app.scroll_to_anchor();
-        
-        // Custom Functions
-        //_app.mobile_takover_nav();
+
+        // Custom
         _app.testimonial_slider();
-    }
+
+        // 👇 your new workflow hook
+        _app.autofill_donate_from_plate();
+    };
+
     
     
     // initialize functions on load

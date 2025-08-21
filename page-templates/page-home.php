@@ -18,6 +18,7 @@ $hero_title = $fields['hero_title'] ?? null;
 // form
 $form_section_id = $fields['form_section_id'] ?? null;
 $form_logo = $fields['form_logo'] ?? null;
+$form_id = $fields['donate_form_id'] ?? null;
 
 // about
 $about_section_id = $fields['about_section_id'] ?? null;
@@ -63,35 +64,48 @@ $testimonials = $fields['testimonials'] ?? null;
 					<?php endif;?>
 					<section class="entry-content" itemprop="text">
 						
-						<?php if( $form_logo || $about_large_copy || $about_medium_copy ):?>
-							<section class="form-section bg-teal color-white">
-								<div class="grid-container">
-									<?php if( $form_logo ):?>
-										<div id="<?=sanitize_title($form_section_id);?>" class="top grid-x grid-padding-x">
-											<?php if( $form_logo ):?>
-												<div class="logo-wrap cell small-12 medium-shrink">
-													<?=wp_get_attachment_image( $form_logo['id'], 'full' );?>
-												</div>
-											<?php endif;?>
+					<?php if ( $form_logo || $about_large_copy || $about_medium_copy ): ?>
+					<section class="form-section bg-teal color-white">
+						<div class="grid-container">
+
+							<!-- Logo + Form (same row) -->
+							<div id="<?= sanitize_title( $form_section_id ); ?>" class="top grid-x grid-padding-x align-middle">
+								<?php if ( $form_logo ): ?>
+									<div class="logo-wrap cell small-12 medium-shrink">
+										<?= wp_get_attachment_image( $form_logo['id'], 'full' ); ?>
+									</div>
+								<?php endif; ?>
+
+								<?php if ( $form_id ): ?>
+									<div class="donation-form cell small-12 medium-auto">
+										<?= do_shortcode( sprintf(
+											'[gravityform id="%d" title="true" description="false" ajax="true"]',
+											(int) $form_id
+										) ); ?>
+									</div>
+								<?php endif; ?>
+							</div>
+
+							<!-- About copy (below) -->
+							<?php if ( $about_large_copy || $about_medium_copy ): ?>
+								<div id="<?= sanitize_title( $about_section_id ); ?>" class="bottom grid-x grid-padding-x">
+									<?php if ( $about_large_copy ): ?>
+										<div class="large-copy cell small-12 medium-6">
+											<?= wp_kses_post( $about_large_copy ); ?>
 										</div>
-									<?php endif;?>
-									<?php if( $about_large_copy || $about_medium_copy ):?>
-										<div id="<?=sanitize_title($about_section_id);?>" class="bottom grid-x grid-padding-x">
-											<?php if( $about_large_copy ):?>
-												<div class="large-copy cell small-12 medium-6">
-													<?=wp_kses_post( $about_large_copy );?>
-												</div>
-											<?php endif;?>
-											<?php if( $about_medium_copy ):?>
-												<div class="medium-copy cell small-12 medium-6">
-													<?=wp_kses_post( $about_medium_copy );?>
-												</div>
-											<?php endif;?>
+									<?php endif; ?>
+									<?php if ( $about_medium_copy ): ?>
+										<div class="medium-copy cell small-12 medium-6">
+											<?= wp_kses_post( $about_medium_copy ); ?>
 										</div>
-									<?php endif;?>
+									<?php endif; ?>
 								</div>
-							</section>
-						<?php endif;?>
+							<?php endif; ?>
+
+						</div>
+					</section>
+					<?php endif; ?>
+
 						
 						<?php if( $how_title || $how_columns ):?>
 							<section id="<?=sanitize_title($how_section_id);?>" class="faq bg-navy color-white text-center" data-equalizer data-equalize-on="medium">

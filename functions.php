@@ -159,8 +159,28 @@ function trailhead_scripts() {
 	
 	wp_enqueue_style( 'trailhead-style-min', get_template_directory_uri() . '/assets/styles/style.min.css', array(), _S_VERSION );
 	
-	wp_enqueue_script( 'app-js', get_template_directory_uri() . '/assets/scripts/app.min.js', array('jquery'), _S_VERSION, true );
-	
+	 wp_enqueue_script(
+        'swiper',
+        get_template_directory_uri() . '/assets/scripts/vendor/swiper-bundle.js',
+        ['jquery'],
+        '8.3.2',
+        true
+    );
+	 wp_enqueue_script(
+        'foundation',
+        get_template_directory_uri() . '/assets/scripts/vendor/foundation/js/foundation.min.js',
+        ['jquery'],
+        '6.7.5',
+        true
+    );
+
+ 	wp_enqueue_script(
+        'app-js',
+        get_template_directory_uri() . '/assets/scripts/app.min.js',
+        ['jquery','foundation'],
+        '1.0.0',
+        true
+    );	
 	//wp_enqueue_script( 'trailhead-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -223,7 +243,12 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 
 
+
+
 // Additional Custom Functions
+
+// Vehicle Lookup API Functions
+require_once(get_template_directory().'/inc/vehicle-lookup.php');
 
 // WP Head and other cleanup functions
 require_once(get_template_directory().'/inc/cleanup.php'); 

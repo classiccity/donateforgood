@@ -1,0 +1,65 @@
+
+.donation-form {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+
+  .gform_wrapper {
+    background: white;
+    border: 3px solid #d4d3d6;
+    border-radius: 25px;
+    padding: 1.125rem 2rem;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  select {
+    border: 1px solid #e8e8e8 !important;
+    border-radius: 2px !important;
+  }
+
+  input[type="submit"] {
+    margin: 0 auto !important;
+    padding: .325em 2.2em !important;
+    background: #e7242c !important;
+    font-size: 1.325rem !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important;
+  }
+}
+
+.page-template-page-home {
+  .donation-form {
+    padding: 2rem 2rem 4rem;
+    display: flex;
+    justify-content: flex-end;
+
+    .gform_wrapper {
+      max-width: 700px !important;
+    }
+
+
+  .gform_fields {
+    gap: .625rem !important;
+  }
+
+
+  .gform_title {
+    color: #808080;
+    font-size: clamp(2rem, 3vw, 1.325rem);
+    font-weight: 900;
+    text-align: left;
+  }
+    .gfield_label,
+    .gform-field-label {
+      display: none !important;
+    }
+  }
+}
+
+.page-template-page-donate {
+  .donation-form {
+    max-width: 940px;
+    margin: 0 auto;
+  }
+}

@@ -14,6 +14,7 @@ $mediumGutter: map-get($grid-margin-gutters, "medium");
 @import "mixins";
 @import "vendor/foundation/vendor/normalize";
 @import "vendor/foundation/foundation";
+@import "vendor/gravity-forms/_gravity-forms";
 
 // Global styles
 @include foundation-global-styles;
@@ -91,3 +92,4 @@ $mediumGutter: map-get($grid-margin-gutters, "medium");
 
 @import "_pages/home";
 @import "_pages/faq";
+@import "_pages/donate";

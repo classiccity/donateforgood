@@ -159,6 +159,29 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_68a48dc47e78e",
+            "label": "Donate Form ID",
+            "name": "donate_form_id",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Gravity Form ID - enter just the number",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_689a7993ca581",
             "label": "About",
             "name": "",
@@ -634,5 +657,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755263635
+    "modified": 1755614741
 }
