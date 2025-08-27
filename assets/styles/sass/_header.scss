@@ -4,12 +4,15 @@
 	}
 }
 header.site-header {
-	padding: 35px 0;
+	padding: clamp(0.75rem, 0.284rem + 1.989vw, 1.875rem) 0;
 	background-color: $color-orange;
 	@include breakpoint(small down) {
 		.top-bar .top-bar-left, 
 		.top-bar .top-bar-right {
 			flex: 0 0 auto;
+		}
+		.top-bar .top-bar-right {
+			text-align: right;
 		}
 	}
 	
@@ -27,10 +30,7 @@ header.site-header {
 	#top-bar-menu {
 		
 		li.logo {
-			max-width: 118px;
-			@include breakpoint(medium) {
-
-			}
+			max-width: clamp(5.625rem, 4.614rem + 4.314vw, 7.375rem);
 			@include breakpoint(tablet) {
 
 			}
@@ -73,6 +73,7 @@ header.site-header {
 		    flex: 0 0 auto;
 		    
 		    a#menu-toggle {
+				margin-top: 4px;
 			    padding: 0;
 			    width: 36px;
 			    height: 36px;

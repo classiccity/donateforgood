@@ -37,21 +37,21 @@ svg {
 		}
 	}
 	a.accordion-title {	
-		padding: clamp(1.269rem, 1.043rem + 0.961vw, 1.813rem) clamp(1.837rem, 1.511rem + 1.392vw, 2.625rem);
+		padding: clamp(1.269rem, 1.043rem + 0.961vw, 1.813rem) 5rem clamp(1.269rem, 1.043rem + 0.961vw, 1.813rem) clamp(1.837rem, 1.511rem + 1.392vw, 2.625rem);
 		&:hover,
 		&:focus {
 			color: $white;
 		}
 		&:before {
 			content: '';
-			top: clamp(1.041rem, 0.824rem + 0.923vw, 1.563rem);
-			right: clamp(2.275rem, 1.871rem + 1.724vw, 3.25rem);
+			top: clamp(1.25rem, 1.12rem + 0.553vw, 1.563rem);
+			right: clamp(1.375rem, 0.391rem + 4.199vw, 3.75rem);
 			margin: 0;
 			font-size: 0;
-			width: 40px;
-			height: 40px;
+			width: clamp(1.75rem, 1.439rem + 1.326vw, 2.5rem);
+			height: clamp(1.75rem, 1.439rem + 1.326vw, 2.5rem);
 			background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="29"><path fill-rule="evenodd" fill="%23FFF" d="m25 0 24.1 29H0L25 0Z"/></svg>');
-			background-size: 33.3px;
+			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: center center;
 			transition: .3s ease;

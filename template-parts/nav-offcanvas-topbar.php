@@ -12,9 +12,9 @@ $header_phone_number = get_field('header_phone_number', 'option') ?? null;
 
 <div class="top-bar-wrap grid-container fluid">
 
-	<div class="top-bar" id="top-bar-menu">
+	<div class="top-bar grid-x grid-padding-x" id="top-bar-menu">
 	
-		<div class="top-bar-left float-left">
+		<div class="top-bar-left cell shrink float-left">
 			
 			<div class="site-branding show-for-sr">
 				<?php
@@ -46,11 +46,12 @@ $header_phone_number = get_field('header_phone_number', 'option') ?? null;
 				</div>
 			</div>
 		</div>
-		<div class="menu-toggle-wrap top-bar-right float-right">
+		<div class="menu-toggle-wrap top-bar-right  cell auto float-right grid-x flex-dir-column align-bottom">
 			<?php if( $header_phone_label || $header_phone_number || $header_displayed_header_phone_number ):?>
 				<div class="header-phone uppercase color-white">
 					<?php if( $header_phone_label && $header_displayed_header_phone_number ):?>
 						<b><?=wp_kses_post($header_phone_label);?></b>
+						<br class="hide-for-large">
 					<?php endif;?>
 					<?php if( $header_phone_number ):?>
 						<a href="tel:<?=esc_attr($header_phone_number);?>"><?=esc_attr($header_displayed_header_phone_number);?></a>
