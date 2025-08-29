@@ -1,98 +1,32 @@
 <?php
 // /wp-json/vehdb/v1/license-decode?plate=ABC123&state=GA
 add_action('rest_api_init', function () {
-  register_rest_route('vehdb/v1', '/license-decode', [
+  register_rest_route('vehdb/v1', '/vin-decode', [
     'methods'  => 'GET',
-    'callback' => 'vehdb_decode_proxy',
+    'callback' => 'vehdb_vin_decode_proxy',
     'permission_callback' => '__return_true',
     'args' => [
-      'plate' => ['required' => true, 'sanitize_callback' => 'sanitize_text_field'],
-      'state' => ['required' => true, 'sanitize_callback' => 'sanitize_text_field'],
+      'vin' => [
+        'required' => true,
+        'sanitize_callback' => 'sanitize_text_field',
+      ],
     ],
   ]);
 });
 
-function vehdb_decode_proxy( WP_REST_Request $req ) {
-  $plate = strtoupper(trim($req->get_param('plate')));
-  $state = strtoupper(trim($req->get_param('state')));
+function vehdb_vin_decode_proxy( WP_REST_Request $req ) {
+  $vin = strtoupper(trim($req->get_param('vin')));
 
-  if (!$plate || !$state) {
-    return new WP_REST_Response(['error' => 'Plate and state are required'], 400);
-  }
-
-  // Full state names to abbreviations
-  $states = [
-    'ALABAMA' => 'AL',
-    'ALASKA' => 'AK',
-    'ARIZONA' => 'AZ',
-    'ARKANSAS' => 'AR',
-    'CALIFORNIA' => 'CA',
-    'COLORADO' => 'CO',
-    'CONNECTICUT' => 'CT',
-    'DELAWARE' => 'DE',
-    'FLORIDA' => 'FL',
-    'GEORGIA' => 'GA',
-    'HAWAII' => 'HI',
-    'IDAHO' => 'ID',
-    'ILLINOIS' => 'IL',
-    'INDIANA' => 'IN',
-    'IOWA' => 'IA',
-    'KANSAS' => 'KS',
-    'KENTUCKY' => 'KY',
-    'LOUISIANA' => 'LA',
-    'MAINE' => 'ME',
-    'MARYLAND' => 'MD',
-    'MASSACHUSETTS' => 'MA',
-    'MICHIGAN' => 'MI',
-    'MINNESOTA' => 'MN',
-    'MISSISSIPPI' => 'MS',
-    'MISSOURI' => 'MO',
-    'MONTANA' => 'MT',
-    'NEBRASKA' => 'NE',
-    'NEVADA' => 'NV',
-    'NEW HAMPSHIRE' => 'NH',
-    'NEW JERSEY' => 'NJ',
-    'NEW MEXICO' => 'NM',
-    'NEW YORK' => 'NY',
-    'NORTH CAROLINA' => 'NC',
-    'NORTH DAKOTA' => 'ND',
-    'OHIO' => 'OH',
-    'OKLAHOMA' => 'OK',
-    'OREGON' => 'OR',
-    'PENNSYLVANIA' => 'PA',
-    'RHODE ISLAND' => 'RI',
-    'SOUTH CAROLINA' => 'SC',
-    'SOUTH DAKOTA' => 'SD',
-    'TENNESSEE' => 'TN',
-    'TEXAS' => 'TX',
-    'UTAH' => 'UT',
-    'VERMONT' => 'VT',
-    'VIRGINIA' => 'VA',
-    'WASHINGTON' => 'WA',
-    'WEST VIRGINIA' => 'WV',
-    'WISCONSIN' => 'WI',
-    'WYOMING' => 'WY',
-    // DC and territories
-    'DISTRICT OF COLUMBIA' => 'DC',
-    'PUERTO RICO' => 'PR',
-    'GUAM' => 'GU',
-    'AMERICAN SAMOA' => 'AS',
-    'NORTHERN MARIANA ISLANDS' => 'MP',
-    'US VIRGIN ISLANDS' => 'VI'
-  ];
-
-  // Convert if needed
-  if (isset($states[$state])) {
-    $state = $states[$state];
+  if (!$vin) {
+    return new WP_REST_Response(['error' => 'VIN is required'], 400);
   }
 
   // Keep the API key server-side
   $apiKey = get_field('api_key', 'option') ?? '';
 
   $url = sprintf(
-    'https://api.vehicledatabases.com/license-decode/%s/%s',
-    rawurlencode($plate),
-    rawurlencode($state)
+    'https://api.vehicledatabases.com/vin-decode/%s',
+    rawurlencode($vin)
   );
 
   $resp = wp_remote_get($url, [
@@ -120,7 +54,7 @@ function vehdb_decode_proxy( WP_REST_Request $req ) {
   $intro = $json['data']['intro'] ?? [];
 
   return [
-    'vin'   => $intro['vin']  ?? '',
+    'vin'   => $intro['vin']  ?? $vin,
     'year'  => $basic['year'] ?? '',
     'make'  => $basic['make'] ?? '',
     'model' => $basic['model']?? '',
